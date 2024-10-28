@@ -4,6 +4,7 @@
 #include "hashmap.h"
 #include "object.h"
 #include "list.h"
+#include "repository.h"
 #include "thread-utils.h"
 #include "oidset.h"
 
@@ -135,6 +136,10 @@ struct packed_git {
 	 */
 	const uint32_t *mtimes_map;
 	size_t mtimes_size;
+
+	/* repo dentoes the repository this packed file belongs to */
+	struct repository *repo;
+
 	/* something like ".git/objects/pack/xxxxx.pack" */
 	char pack_name[FLEX_ARRAY]; /* more */
 };
